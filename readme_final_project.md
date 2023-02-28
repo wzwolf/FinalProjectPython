@@ -106,4 +106,6 @@ Copy the external IP address of your instance from the Connection Details Panel 
 In the home directory, you'll have a script named example_upload.py to upload images to the running fruit catalog web server. To view the example_upload.py script use the cat command.
 
 
+cat ~/example_upload.py
+
 

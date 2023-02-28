@@ -16,6 +16,19 @@ Since this process is key to your business's success, you need to make sure that
 
 # how to use 
 
+
+# skills used
+bash
+python
+    - generating PDFS with Reportlabs
+    - sending emails with pdfs
+    - monitoring server 
+    - request module to POST JSON data to a API endpoint
+    - unit testing and intergration testing
+apache server
+Django API
+
+
 # changelog 
 
 - added problem statement
