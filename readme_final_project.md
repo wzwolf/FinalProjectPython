@@ -353,4 +353,32 @@ available memory is less than 500MB | Error - Available memory is less than 500M
 
 hostname "localhost" cannot be resolved to "127.0.0.1" | Error - localhost cannot be resolved to 127.0.0.1
 
+E-mail Body: Please check your system and resolve the issue as soon as possible.
 
+Note: There is no attachment file here, so you must be careful while defining the generate_email() method in the emails.py script or you can create a separate generate_error_report() method for handling non-attachment email.
+
+Once you have completed the health_check.py script. Save the file by typing Ctrl-o, Enter key, and Ctrl-x.
+
+Grant executable permissions to the script health_check.py.
+
+sudo chmod +x ~/health_check.py
+
+Run the file.
+
+./health_check.py
+
+Next, go to the webmail inbox and refresh it. There should only be an email something goes wrong, so hopefully you don't see a new email.
+
+To test out your script, you can install the stress tool.
+
+Now, you will be setting a cron job that executes the script health_check.py every 60 seconds and sends health status to the respective user.
+
+To set a user cron job use the following command:
+
+crontab -e
+
+Enter 1 to open in the nano editor. Now, set the complete path for health_check.py script, and save by clicking Ctrl-o, Enter key, and Ctrl-x.
+
+<m> <h> <day of month> <m> <day of week> <cmd>
+
+1 * * * * ./health_check.py
