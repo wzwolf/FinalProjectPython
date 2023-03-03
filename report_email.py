@@ -4,7 +4,7 @@ import os
 import datetime
 import reports
 import logging
-import re
+import emails
 
 logging.basicConfig(level=logging.DEBUG)
 description_text_dir = os.path.join("supplier-data","descriptions")
@@ -56,12 +56,13 @@ def main():
     paragraph = content_from_dir() 
     reports.generate_report(attachment, title, paragraph)
     # generate email
-
-
-
-
-
-
+    sender = "automation@example.com"
+    recipient = "<username>@example.com"
+    subject = "Upload Completed - Online Fruit Store"
+    body = "All fruits are uploaded to our website successfully. A detailed list is attached to this email."
+    attachment_path = attachment
+    email = emails.generate_email(sender, recipient, subject, body, attachment_path)
+    emails.send_email(email)
 
 if __name__ == "__main__":
     main()
