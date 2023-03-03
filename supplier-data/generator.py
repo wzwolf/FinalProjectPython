@@ -96,15 +96,15 @@ def generate_description():
 
 def generate_img():
     """generate x number of images in images folder
-    with indexed name 000.jpeg"""
+    with indexed name 000.tiff"""
     remove_all_from_dir(img_dir_path)
     for index in range(no_of_images_to_generate):
-        img_name = "{:03}.jpg".format(index)
+        img_name = "{:03}.tiff".format(index)
         # copy file from example.jpg
         source = os.path.abspath(sample_img_path)
         destination = os.path.join(img_dir_path,img_name)
         copyfile(source,destination)
-    logging.info("images 000.jpg to {:03}.jpg generated".format(no_of_images_to_generate))
+    logging.info("images 000.tiff to {:03}.tiff generated".format(no_of_images_to_generate))
 
 if __name__ == '__main__':
     generate_description()
