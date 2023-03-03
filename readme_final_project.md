@@ -117,20 +117,8 @@ from os import listdir
 # The Python Requests module
 
 url = "http://localhost/upload/"
-
-
-def upload(file, url):
-    with open(file, "rb") as opened:
-        requests.post(url, files={"file": opened})
-
-
-# set image dir:
-img_dir = "supplier-data/images/"
-
-# gather list of image files:
-img_files = [img_dir + f for f in listdir(img_dir) if f.endswith(".jpeg")]
-for file in img_files:
-    upload(file, url)
+with open('','rb') as opened:
+    r = requests.post(url, files={'file':opened})
 
 
 Grant executable permission to the example_upload.py script.

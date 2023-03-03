@@ -6,6 +6,4 @@ from os import listdir
 # The Python Requests module
 
 url = "http://localhost/upload/"
-with open('','rb') as opened:
-    r = requests.post(url, files={'file':opened})
 
