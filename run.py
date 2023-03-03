@@ -12,7 +12,7 @@ import re
 
 logging.basicConfig(level=logging.DEBUG)
 # dest 
-dest_url = r"http://[linux-instance-external-IP]/fruits"
+dest_url = r'http://linux-instance-external-IP/fruits'
 # description vars 
 description_text_dir = os.path.join("supplier-data","descriptions")
 
@@ -28,7 +28,11 @@ def convert_data(file_path, filename):
         file.seek(0, 0)
         output["name"] = file.readline().strip()
         find_digit = re.search(r"^(\d{1,})*",file.readline().strip())
-        output["weight"] = int(find_digit.groups()[0])
+        if not (find_digit == None):
+            output["weight"] = int(find_digit.groups()[0])
+        else:
+            logging.error("weight cannot be found in {}".format(file_path))
+            return
         output["description"] = file.readline().strip() 
         output["image_name"] = os.path.splitext(filename)[0] + ".jpeg"
     return output
