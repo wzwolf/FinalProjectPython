@@ -9,44 +9,27 @@ import datetime
 import logging
 
 
-def generate_report(report_input):
-    """
-    report_input - dictionary of values
-    takes processed data from supplier-data/description
-    return 
-    Processed Update on <Today's date>
-    [blank line]
-    name: <Apple>
-    weight: <500> lbs
-    [blank line]
-    name: <Avocado>
-    weight: <200> lbs
-    [blank line]
-    ...
-    """
+
+def generate_report(filename,title,content):
     # start doc
     styles = getSampleStyleSheet()
-    report = SimpleDocTemplate(report_input["filename"])
+    report = SimpleDocTemplate(filename)
     layout = []
     # generate elements of report 
-    blank_line = Spacer(1,30)
-    title = Paragraph(report_input["title"]+report_input["today_date"], styles["h1"])
+    blank_line = Spacer(1,20)
+    title = Paragraph(title, styles["h1"])
+    content = Paragraph(content, styles["BodyText"])
     # build report
     layout.append(title)
     layout.append(blank_line)
-    # generate content element of report
-    for text in report_input["content"]:
-        content = Paragraph(text,styles["BodyText"])
-        layout.append(content)
-        layout.append(blank_line)
+    layout.append(content)
     report.build(layout)
-    logging.info("Report {} sucessfully generated".format(report_input["filename"]))
+    logging.info("Report {} sucessfully generated".format(filename))
 
 if __name__ == '__main__':
+    # testing code
     logging.basicConfig(level=logging.DEBUG)
-    report_info = {}
-    report_info["filename"] = "processed.pdf"
-    report_info["title"] = "Processed Update on "
-    report_info["today_date"] = datetime.date.today().strftime("%d/%m/%Y")
-    report_info["content"] = []
-    generate_report(report_input=report_info)
+    filename = "processed.pdf"
+    title = "Processed Update on " + datetime.date.today().strftime("%d/%m/%Y")
+    content = "name: Apple <br/>weight: 500 lbs"
+    generate_report(filename,title,content)

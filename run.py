@@ -46,7 +46,7 @@ def main():
         if os.path.isfile(fullname) and os.path.splitext(fullname)[1] == '.txt':
             data = convert_data(fullname,name)
             logging.debug(data)
-            #response = requests.post(dest_url, data)
+            response = requests.post(dest_url, data)
 
 
 
