@@ -8,6 +8,7 @@ import emails
 
 logging.basicConfig(level=logging.DEBUG)
 description_text_dir = os.path.join("supplier-data","descriptions")
+username = ""
 
 def content_from_dir():
     """ report_input - dictionary of values
@@ -57,7 +58,7 @@ def main():
     reports.generate_report(attachment, title, paragraph)
     # generate email
     sender = "automation@example.com"
-    recipient = "<username>@example.com"
+    recipient = "{}@example.com".format(username)
     subject = "Upload Completed - Online Fruit Store"
     body = "All fruits are uploaded to our website successfully. A detailed list is attached to this email."
     attachment_path = attachment

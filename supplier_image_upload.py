@@ -6,7 +6,7 @@ import logging
 # This example shows how a file can be uploaded using
 # The Python Requests module
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 url = "http://localhost/upload/"
 dir_name = os.path.join("supplier-data","images")
 extension = ".jpeg"

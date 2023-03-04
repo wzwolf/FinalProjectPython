@@ -12,7 +12,8 @@ import re
 
 logging.basicConfig(level=logging.DEBUG)
 # dest 
-dest_url = r'http://linux-instance-external-IP/fruits'
+server_ip = ""
+dest_url = 'http://{}/fruits/'.format(server_ip)
 # description vars 
 description_text_dir = os.path.join("supplier-data","descriptions")
 
@@ -44,11 +45,11 @@ def main():
         fullname = os.path.join(description_text_dir,name)
         logging.debug(fullname)
         if os.path.isfile(fullname) and os.path.splitext(fullname)[1] == '.txt':
-            data = convert_data(fullname,name)
-            logging.debug(data)
-            response = requests.post(dest_url, data)
-
-
+            data_to_upload = convert_data(fullname,name)
+            logging.debug(data_to_upload)
+            response = requests.post(dest_url, data=data_to_upload)
+            print(response.status_code)
+            response.raise_for_status()
 
 if __name__ == "__main__":
     main()

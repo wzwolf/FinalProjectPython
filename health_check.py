@@ -13,8 +13,9 @@ memory_usage_mb_warning = 500
 localhost_address_check = "127.0.0.1"
 
 # email settings
+username = ""
 sender = "automation@example.com"
-recipent = "<username>@example.com"
+recipent = "{}@example.com".format(username)
 body = "Please check your system and resolve the issue as soon as possible."
 
 def check_high_cpu_usage(cpu_usage_percent_warning):
